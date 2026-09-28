@@ -104,7 +104,7 @@ export function SpeakerDirectory() {
             <SpeakerCard
               speaker={speaker}
               titleAs="h2"
-              eager={i < 2}
+              preload={i === 0}
               onOpen={() => open(speaker)}
             />
           </li>

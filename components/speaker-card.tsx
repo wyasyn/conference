@@ -4,13 +4,13 @@ import type { Speaker } from "@/lib/conference";
 export function SpeakerCard({
   speaker,
   titleAs: Title = "h3",
-  eager = false,
+  preload = false,
   onOpen,
 }: {
   speaker: Speaker;
   titleAs?: "h2" | "h3";
-  /** Load the photo right away, for cards in the first viewport. */
-  eager?: boolean;
+  /** Request the photo from the document head. Use for the LCP image only. */
+  preload?: boolean;
   /** Makes the whole card a button that opens the speaker's details. */
   onOpen?: () => void;
 }) {
@@ -24,8 +24,7 @@ export function SpeakerCard({
           alt=""
           fill
           sizes="(min-width: 64rem) 25vw, (min-width: 48rem) 50vw, 100vw"
-          loading={eager ? "eager" : undefined}
-          fetchPriority={eager ? "high" : undefined}
+          preload={preload}
           className="object-cover object-bottom"
         />
       </div>
